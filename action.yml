@@ -16,6 +16,10 @@ inputs:
     description: 'When testing with floating dependencies, the lockfile will need to be ignored. Enabling this deletes the lockfile before running pnpm install. This is safe as long as further action steps do not commit the change'
     required: false
     default: false
+  pnpm-args:
+    description: 'Add options to the install command. See https://pnpm.io/cli/install#options'
+    required: false
+    default: ''
 
 runs:
   using: 'composite'
@@ -37,4 +41,4 @@ runs:
           rm -f pnpm-lock.yaml
         fi
 
-        pnpm install
+        pnpm install ${{ inputs.pnpm-args }}
