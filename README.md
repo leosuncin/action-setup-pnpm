@@ -42,6 +42,17 @@ Boolean flag useful for tossing out the lockfile for testing if in-range floatin
     no-lockfile: true
 ```
 
+### `pnpm-args`
+
+Pass options to the install command, these will be appended after the `install` command to pnpm. See https://pnpm.io/cli/install#options' for the list of arguments.
+Defaults to an empty string
+
+```yaml
+- uses: NullVoxPopuli/action-setup-pnpm@v1
+  with:
+    pnpm-args: --frozen-lockfile --strict-peer-dependencies
+```
+
 ## Why?
 
 [`pnpm/action-setup`](https://github.com/pnpm/action-setup/) can install dependencies on its own, but then no cache is used from [`actions/setup-node`](https://github.com/actions/setup-node).
